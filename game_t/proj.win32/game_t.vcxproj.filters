@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\gameScene">
+      <UniqueIdentifier>{6e014372-9f9f-4e93-b6b7-54cc9cf7d66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\gameScene\element">
+      <UniqueIdentifier>{b62a1373-25c5-40b5-a65d-fb82147f0878}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\GamePlay.cpp">
+      <Filter>src\gameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\GameSet.cpp">
+      <Filter>src\gameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\element\C3Button.cpp">
+      <Filter>src\gameScene\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\element\CBoss.cpp">
+      <Filter>src\gameScene\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\element\CBullet.cpp">
+      <Filter>src\gameScene\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\element\CEnemy.cpp">
+      <Filter>src\gameScene\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\element\CPlayer.cpp">
+      <Filter>src\gameScene\element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gameScene\element\CScore.cpp">
+      <Filter>src\gameScene\element</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\GamePlay.h">
+      <Filter>src\gameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\GameSet.h">
+      <Filter>src\gameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\element\C3Button.h">
+      <Filter>src\gameScene\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\element\CBoss.h">
+      <Filter>src\gameScene\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\element\CBullet.h">
+      <Filter>src\gameScene\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\element\CEnemy.h">
+      <Filter>src\gameScene\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\element\CPlayer.h">
+      <Filter>src\gameScene\element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gameScene\element\CScore.h">
+      <Filter>src\gameScene\element</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
