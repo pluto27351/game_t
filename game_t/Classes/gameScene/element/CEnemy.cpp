@@ -1,4 +1,4 @@
-#include "CEnemy.h"
+ï»¿#include "CEnemy.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -27,7 +27,7 @@ CEnemy::CEnemy() {
 	_action->runAction(_actionAni);
 	//_fire->runAction(_fireAni);
 
-	//callback function ´«°Êµe+²¾°Ê
+	//callback function æ›å‹•ç•«+ç§»å‹•
 	_actionAni->setLastFrameCallFunc([=]()
 	{
 		moveAni();
@@ -39,7 +39,7 @@ CEnemy::CEnemy() {
 }
 
 void CEnemy::moveAni() {
-	//´«°Êµe
+	//æ›å‹•ç•«
 	/*this->removeChild(_action);
 	_action = CSLoader::createNode("Ani/EnemyMove.csb");
 	_actionAni = (ActionTimeline *)CSLoader::createTimeline("Ani/EnemyMove.csb");
@@ -48,7 +48,7 @@ void CEnemy::moveAni() {
 	this->addChild(_action, 1);
 	_actionAni->gotoFrameAndPlay(0, 14, true);*/
 
-	//²¾°Ê
+	//ç§»å‹•
 	MoveTo *_moveAction = cocos2d::MoveTo::create(1.5f, Point(0, pt.y));
 	auto callback = CallFunc::create(this, callfunc_selector(CEnemy::lifeEnd));
 	_action->runAction(Sequence::create(_moveAction, callback, NULL));
@@ -66,9 +66,9 @@ int CEnemy::collider(Point player) {
 	Rect colliderArea;
 	pt = _action->getPosition();
 	colliderArea = Rect(pt.x - 50,pt.y-50,100,130);
-	if (colliderArea.containsPoint(player)) return 2;  //¥¢±Ñ
-	else if (_action->getPositionX() < 120) return 1;  //¦¨¥\
-	else return 0;									   //ÁÙ¦³¾÷·|
+	if (colliderArea.containsPoint(player)) return 2;  //å¤±æ•—
+	else if (_action->getPositionX() < 120) return 1;  //æˆåŠŸ
+	else return 0;									   //é‚„æœ‰æ©Ÿæœƒ
 }
 
 void CEnemy::actionControl(bool run) {

@@ -1,4 +1,4 @@
-#include "GamePlay.h"
+ï»¿#include "GamePlay.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "GameSet.h"
@@ -33,7 +33,7 @@ GamePlay::~GamePlay() {
 	this->removeChild(_btnClose2);	delete _btnClose2;
 
 	this->removeChild(_Player);	delete _Player;
-	// ÄÀ©ñ­µ®ÄÀÉ
+	// é‡‹æ”¾éŸ³æ•ˆæª”
 	SimpleAudioEngine::getInstance()->unloadEffect("./Audio/jump.WAV"); 
 	SimpleAudioEngine::getInstance()->unloadEffect("./Audio/attacked.WAV");
 	SimpleAudioEngine::getInstance()->unloadEffect("./Audio/gain point.mp3");
@@ -69,14 +69,14 @@ bool GamePlay::init()
 
 	addChild(rootNode);
 
-	// ¹w¥ı¸ü¤J­µ®ÄÀÉ	
+	// é å…ˆè¼‰å…¥éŸ³æ•ˆæª”	
 	SimpleAudioEngine::getInstance()->preloadEffect("./Audio/jump.WAV");
 	SimpleAudioEngine::getInstance()->preloadEffect("./Audio/attacked.WAV");
 	SimpleAudioEngine::getInstance()->preloadEffect("./Audio/gain point.mp3");
 	SimpleAudioEngine::getInstance()->preloadEffect("./Audio/bullet.WAV");
 
 
-	//«ö¶s¬ÛÃö
+	//æŒ‰éˆ•ç›¸é—œ
 	_btnGo = new C3Button(Vec2(1120,125), "b_playOn.png", "b_playDown.png", "b_playDown.png");
 	this->addChild(_btnGo, 11);
 	_btnMenu = new C3Button(Vec2(1220,670), "s_menuOn.png", "s_menuDown.png", "s_menuDown.png");
@@ -92,7 +92,7 @@ bool GamePlay::init()
 	_btnClose2 = new C3Button(Vec2(1110,595), "s_closeOn.png", "s_closeDown.png", "s_closeDown.png");
 	this->addChild(_btnClose2, 11);
 
-	//¼u¥Xµøµ¡
+	//å½ˆå‡ºè¦–çª—
 	_wbg = Sprite::createWithSpriteFrameName("w_bg.png");
 	_wbg->setPosition(640, 360);
 	_wbg->setScale(10, 10);
@@ -104,7 +104,7 @@ bool GamePlay::init()
 	_menu->setPosition(640, 360);
 	this->addChild(_menu,5);
 */
-	//¹CÀ¸»¡©ú
+	//éŠæˆ²èªªæ˜
 	_help = Sprite::createWithSpriteFrameName("help.png");
 	_help->setPosition(640, 360);
 	this->addChild(_help,10);
@@ -115,7 +115,7 @@ bool GamePlay::init()
 	_btnRestart->setDisable(true);  _btnRestart->setVisible(false);
 	_btnHelp->setDisable(true);     _btnHelp->setVisible(false);
 
-	//µ²§ô¤å¦r
+	//çµæŸæ–‡å­—
 	_finScore = Label::createWithTTF("NO.1 / Score : 000" , "Marker Felt.ttf",48);
 	_finScore->setColor(Color3B(230,85,88));
 	_finScore->setPosition(Vec2(630, 245));
@@ -129,7 +129,7 @@ bool GamePlay::init()
 	_fin->setVisible(false);
 	_finScore->setVisible(false);
 
-	//«öÁä´£¥Ü
+	//æŒ‰éµæç¤º
 	auto att = Label::createWithTTF("Attack", "Marker Felt.ttf", 80);
 	att->setColor(Color3B(224,108,106));
 	att->setPosition(Vec2(280,110));
@@ -140,30 +140,30 @@ bool GamePlay::init()
 	jum->setPosition(Vec2(1000, 110));
 	this->addChild(jum, 1);
 	
-	//¶]¹D¤Á´«
+	//è·‘é“åˆ‡æ›
 	_Line = CSLoader::createNode("Ani/Line.csb");
 	_Line->setPosition(640,355);
 	this->addChild(_Line,0);
 	_LineAni = (ActionTimeline *)CSLoader::createTimeline("Ani/Line.csb");
 	_Line->runAction(_LineAni);
 
-	//¶i«×±ø
+	//é€²åº¦æ¢
 	_timeline = (cocos2d::ui::LoadingBar*)rootNode->getChildByName("timeline");
 	_timeline->setDirection(LoadingBar::Direction::LEFT);
 
-	//¤À¼Æ
+	//åˆ†æ•¸
 	_Score = (cocos2d::ui::Text *)rootNode->getChildByName("score");
 	_Level = (cocos2d::ui::Text *)rootNode->getChildByName("level");
 	
-	//Ä²±±
-	_listener1 = EventListenerTouchOneByOne::create();	//³Ğ«Ø¤@­Ó¤@¹ï¤@ªº¨Æ¥ó²âÅ¥¾¹
-	_listener1->onTouchBegan = CC_CALLBACK_2(GamePlay::onTouchBegan, this);		//¥[¤JÄ²¸I¶}©l¨Æ¥ó
-	_listener1->onTouchMoved = CC_CALLBACK_2(GamePlay::onTouchMoved, this);		//¥[¤JÄ²¸I²¾°Ê¨Æ¥ó
-	_listener1->onTouchEnded = CC_CALLBACK_2(GamePlay::onTouchEnded, this);		//¥[¤JÄ²¸IÂ÷¶}¨Æ¥ó
+	//è§¸æ§
+	_listener1 = EventListenerTouchOneByOne::create();	//å‰µå»ºä¸€å€‹ä¸€å°ä¸€çš„äº‹ä»¶è†è½å™¨
+	_listener1->onTouchBegan = CC_CALLBACK_2(GamePlay::onTouchBegan, this);		//åŠ å…¥è§¸ç¢°é–‹å§‹äº‹ä»¶
+	_listener1->onTouchMoved = CC_CALLBACK_2(GamePlay::onTouchMoved, this);		//åŠ å…¥è§¸ç¢°ç§»å‹•äº‹ä»¶
+	_listener1->onTouchEnded = CC_CALLBACK_2(GamePlay::onTouchEnded, this);		//åŠ å…¥è§¸ç¢°é›¢é–‹äº‹ä»¶
 
-	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(_listener1, this);	//¥[¤J­è³Ğ«Øªº¨Æ¥ó²âÅ¥¾¹
+	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(_listener1, this);	//åŠ å…¥å‰›å‰µå»ºçš„äº‹ä»¶è†è½å™¨
 
-	// ±N doStep ¨ç¦¡±¾¤J schedule list ¤¤¡A¨C¤@­Ó frame ´N³£·|³Q©I¥s¨ì
+	// å°‡ doStep å‡½å¼æ›å…¥ schedule list ä¸­ï¼Œæ¯ä¸€å€‹ frame å°±éƒ½æœƒè¢«å‘¼å«åˆ°
 	this->schedule(CC_SCHEDULE_SELECTOR(GamePlay::doStep));
 	return true;
 
@@ -179,7 +179,7 @@ void GamePlay::setMode(int m, Color3B c, Color3B c2,CScore *table) {
 }
 
 void GamePlay::restart() {
-	//ªì©l¤Æ
+	//åˆå§‹åŒ–
 	while (hasEnemy) {
 		CEnemy *e = _HeadEnemy;
 		e->GoDie = true;
@@ -197,11 +197,11 @@ void GamePlay::restart() {
 		hasPlayer = false;
 	}
 
-	//­I´º­µ¼Ö
+	//èƒŒæ™¯éŸ³æ¨‚
 	auto bkmusic = (cocostudio::ComAudio *)rootNode->getChildByName("BG_Music")->getComponent("BG_Music");
 	bkmusic->playBackgroundMusic();
 	 
-	//­Ë¼Æ­p®É¶}©l
+	//å€’æ•¸è¨ˆæ™‚é–‹å§‹
 	Node *node321 = CSLoader::createNode("Ani/321ani.csb");
 	ActionTimeline  *node321ani =( ActionTimeline *)CSLoader::createTimeline("Ani/321ani.csb");
 	node321->runAction(node321ani);
@@ -217,14 +217,14 @@ void GamePlay::restart() {
 	_table->setVisible(true);
 	_wbg->setVisible(true);
 
-	//¨¤¦â¥Í¦¨
+	//è§’è‰²ç”Ÿæˆ
 	_Player = new CPlayer(Cnormal, Cattacked);
 	_Player->_hp->setPercent(100);
 	_Player->_mp->setPercent(100);
 	this->addChild(_Player, 2);
 	hasPlayer = true;
 
-	//¤À¼Æ³]©w
+	//åˆ†æ•¸è¨­å®š
 	score = 0;
 	strcpy(scoreNo, "000");
 	_Score->setString(scoreNo);
@@ -236,14 +236,14 @@ void GamePlay::restart() {
 	strcpy(lvNo, "NO.6");
 	_Level->setString(lvNo);
 
-	//btnÃö³¬
+	//btné—œé–‰
 	_btnMenu->setDisable(true);
 
-	//¶i«×³]©w
+	//é€²åº¦è¨­å®š
 	_timeline->setPercent(0);
 	bossNum = 0;
 
-	//ÁôÂÃ
+	//éš±è—
 	_fin->setVisible(false);
 	_finScore->setVisible(false);
 
@@ -251,17 +251,17 @@ void GamePlay::restart() {
 
 void GamePlay::start() {
 
-	//¹CÀ¸°Êµe¼·©ñ
+	//éŠæˆ²å‹•ç•«æ’¥æ”¾
 	_LineAni->gotoFrameAndPlay(0, 20, true);
 	_Player->start();
 
-	//«ö¶s¶}±Ò
+	//æŒ‰éˆ•é–‹å•Ÿ
 	_btnMenu->setDisable(false);
 
 	_table->setVisible(false);
 	_wbg->setVisible(false);
 
-	//¹CÀ¸¶}©l
+	//éŠæˆ²é–‹å§‹
 	START = true;
 }
 
@@ -270,47 +270,47 @@ void GamePlay::doStep(float dt)
 	if (START) {
 		TotalTime += dt;
 
-		//¶i«×±ø
+		//é€²åº¦æ¢
 		float timeline = _timeline->getPercent();
 		if (hasBoss == false) {
 			timeline += dt*3;
 			_timeline->setPercent(timeline);
 		}
 
-		//©Çª«¥Í¦¨®É¶¡®t
+		//æ€ªç‰©ç”Ÿæˆæ™‚é–“å·®
 		if (renderFlag) {
 			RenderESet();
 			dtTime = TotalTime;
 			renderFlag = false;
 		}
 
-		//¥Í¦¨¤p©Çª«
+		//ç”Ÿæˆå°æ€ªç‰©
 		if ((TotalTime - dtTime) > randomdt) {
 			renderFlag = true;
 			RenderEnemy();
 		}
 		
-		//¥Í¦¨boss
+		//ç”Ÿæˆboss
 		if ((int)timeline / 20 == (bossNum+1) && hasBoss == false) {
 			RenderBoss();
 			timeline += 1;
 			_timeline->setPercent(timeline);
 		}
 		
-		//¦^ÂÅ
+		//å›è—
 		if (_Player->_mp->getPercent() < 100) {
 			float t = _Player->_mp->getPercent();
 			t += dt * 5;
 			_Player->_mp->setPercent(t);
 		}
 
-		//¸I¼²§PÂ_
+		//ç¢°æ’åˆ¤æ–·
 		if (hasEnemy && (_HeadEnemy->hasColliEnd == false)) jumpcCollide(_HeadEnemy);
 		if (hasBoss && _Player->hasBullet &&_Boss->isMoving == false) bulletCollide();
 		if (hasBoss && _Boss->isMoving && (_Boss->hasColliEnd == false))jumpcCollide(_Boss);
 
 
-		//¤Hª«´«Áy
+		//äººç‰©æ›è‡‰
 		if ((_Player->ChangeFlag == true) && (_Player->changeTime += dt)>0.5) {
 			_Player->changeTime = 0;
 			_Player->changeFace(NORMAL_FACE);
@@ -318,7 +318,7 @@ void GamePlay::doStep(float dt)
 
 		if (_Player->_hp->getPercent() == 0) theEnd();
 
-		//±ş¦º¤@¤Á
+		//æ®ºæ­»ä¸€åˆ‡
 		_Player->killbullet();
 		killEnemy();
 		killBoss();
@@ -454,7 +454,7 @@ void GamePlay::addScore(int s) {
 		_STable->score += s;
 		int i = _STable->score, j=0;
 		while (i > 0) {
-			scoreNo[2 - j] = i % 10 + 48;   //48 = 1ªº½s¸¹
+			scoreNo[2 - j] = i % 10 + 48;   //48 = 1çš„ç·¨è™Ÿ
 			i = i / 10;
 			j++;
 		}
@@ -465,21 +465,21 @@ void GamePlay::addScore(int s) {
 
 void GamePlay::levelUp() {
 	_STable->level++;
-	lvNo[3] = (7- _STable->level) + 48;   //48 = 1ªº½s¸¹
+	lvNo[3] = (7- _STable->level) + 48;   //48 = 1çš„ç·¨è™Ÿ
 	_Level->setString(lvNo);
 	if (_STable->level == 5) complete = true;
 }
 
 void GamePlay::jumpcCollide(CEnemy *enemy) {
 	switch(enemy->collider(_Player->getPosition())){
-	case 0:  //ÁÙ¥¼¨ì
+	case 0:  //é‚„æœªåˆ°
 		break;
-	case 1:  //¸õÅD¦¨¥\
+	case 1:  //è·³èºæˆåŠŸ
 		enemy->hasColliEnd = true;
 		_Player->changeFace(HAPPY_FACE);
 		addScore(1);
 		break;
-	case 2:  //¸õÅD¥¢±Ñ
+	case 2:  //è·³èºå¤±æ•—
 		enemy->hasColliEnd = true;
 		SimpleAudioEngine::getInstance()->playEffect("./Audio/attacked.WAV", false);
 		_Player->changeFace(SAD_FACE);
@@ -489,14 +489,14 @@ void GamePlay::jumpcCollide(CEnemy *enemy) {
 }
 void GamePlay::jumpcCollide(CBoss *boss) {
 	switch (boss->collider(_Player->getPosition())) {
-	case 0:  //ÁÙ¥¼¨ì
+	case 0:  //é‚„æœªåˆ°
 		break;
-	case 1:  //¸õÅD¦¨¥\
+	case 1:  //è·³èºæˆåŠŸ
 		boss->hasColliEnd = true;
 		_Player->changeFace(HAPPY_FACE);
 		addScore(5);
 		break;
-	case 2:  //¸õÅD¥¢±Ñ
+	case 2:  //è·³èºå¤±æ•—
 		boss->hasColliEnd = true;
 		SimpleAudioEngine::getInstance()->playEffect("./Audio/attacked.WAV", false);
 		_Player->changeFace(SAD_FACE);
@@ -573,11 +573,11 @@ void GamePlay::actionControl(bool run) {
 }
 
 
-bool GamePlay::onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent)//Ä²¸I¶}©l¨Æ¥ó
+bool GamePlay::onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent)//è§¸ç¢°é–‹å§‹äº‹ä»¶
 {
 	Point touchLoc = pTouch->getLocation();
 
-	//¸õÅD»P§ğÀ»
+	//è·³èºèˆ‡æ”»æ“Š
 	if (touchLoc.y < 360  &&  START) {  
 		if (touchLoc.x < 640 && _Player->BulletFlag == false) {
 			_Player->RenderBullet();
@@ -602,7 +602,7 @@ bool GamePlay::onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent)//Ä²¸
 	return true;
 }
 
-void  GamePlay::onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //Ä²¸I²¾°Ê¨Æ¥ó
+void  GamePlay::onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //è§¸ç¢°ç§»å‹•äº‹ä»¶
 {
 	Point touchLoc = pTouch->getLocation();
 
@@ -615,7 +615,7 @@ void  GamePlay::onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //Ä
 	_btnClose2->isLeave(touchLoc);
 }
 
-void  GamePlay::onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //Ä²¸Iµ²§ô¨Æ¥ó 
+void  GamePlay::onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //è§¸ç¢°çµæŸäº‹ä»¶ 
 {
 	Point touchLoc = pTouch->getLocation();
 

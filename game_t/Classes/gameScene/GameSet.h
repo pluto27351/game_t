@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
@@ -56,9 +56,9 @@ public:
 	bool init();
 
 	cocos2d::EventListenerTouchOneByOne *_listener1;
-	bool onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //ƒ≤∏I∂}©l®∆•Û
-	void onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //ƒ≤∏I≤æ∞ ®∆•Û
-	void onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //ƒ≤∏Iµ≤ßÙ®∆•Û 
+	bool onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //Ëß∏Á¢∞ÈñãÂßã‰∫ã‰ª∂
+	void onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //Ëß∏Á¢∞ÁßªÂãï‰∫ã‰ª∂
+	void onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //Ëß∏Á¢∞ÁµêÊùü‰∫ã‰ª∂ 
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(GameSet);

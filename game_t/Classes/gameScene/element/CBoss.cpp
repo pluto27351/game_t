@@ -1,4 +1,4 @@
-#include "CBoss.h"
+ï»¿#include "CBoss.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #define HP 25
@@ -23,7 +23,7 @@ CBoss::~CBoss() {
 }
 
 CBoss::CBoss(int mode,int num) {
-	Mode = mode, Num = num;   // num->³t«× ¦å¶q
+	Mode = mode, Num = num;   // num->é€Ÿåº¦ è¡€é‡
 	int i = random(1, 3);
 	int j = random(1, 4);
 	switch (i) {
@@ -49,7 +49,7 @@ CBoss::CBoss(int mode,int num) {
 	reHP = 25 + (10 * Num);      // 25,35,45,55,65
 	speed = SPEED - (Num / 2)*0.5;			//3.0,2.5,2.0
 
-	//¸ü¤J°Êµe
+	//è¼‰å…¥å‹•ç•«
 	pt = Vec2(1407, 340);
 	_action = CSLoader::createNode(runner);
 	_actionAni = (ActionTimeline *)CSLoader::createTimeline(runner);
@@ -57,7 +57,7 @@ CBoss::CBoss(int mode,int num) {
 	this->addChild(_action, 1);
 	_action->runAction(_actionAni);
 
-	//§ïÃC¦â
+	//æ”¹é¡è‰²
 	Sprite *_body = (cocos2d::Sprite *)_action->getChildByName("body");
 	Sprite *_mouth = (cocos2d::Sprite *)_action->getChildByName("Normal")->getChildByName("mouth");
 	Sprite *_mouth2 = (cocos2d::Sprite *)_action->getChildByName("Sad")->getChildByName("mouth");
@@ -65,7 +65,7 @@ CBoss::CBoss(int mode,int num) {
 	_mouth->setColor(color);
 	_mouth2->setColor(color2);
 
-	//¶i³õ
+	//é€²å ´
 	MoveTo *_moveAction = cocos2d::MoveTo::create(2.0f, Point(1136, pt.y));
 	auto callback = CallFunc::create(this, callfunc_selector(CBoss::running));
 	_action->runAction(Sequence::create(_moveAction, callback, NULL));
@@ -153,12 +153,12 @@ void CBoss::lifeEnd() {
 int CBoss::collider(Point player) {
 	Rect colliderArea;
 	colliderArea = Rect(_action->getPositionX() - 80, _action->getPositionY() - 70, 140, 150);
-	if (colliderArea.containsPoint(player)) {     //¥¢±Ñ
+	if (colliderArea.containsPoint(player)) {     //å¤±æ•—
 		reback();
 		return 2;
 	}
-	else if (_action->getPositionX() < 140) return 1;  //¦¨¥\
-	else return 0;									   //ÁÙ¦³¾÷·|
+	else if (_action->getPositionX() < 140) return 1;  //æˆåŠŸ
+	else return 0;									   //é‚„æœ‰æ©Ÿæœƒ
 }
 
 void CBoss::reback() {

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
@@ -35,7 +35,7 @@ public:
 	bool BulletFlag = false, ChangeFlag = false, JumpFlag =false;
 	bool hasBullet = false;
 
-	//Ĳ�I�ʧ@
+	//觸碰動作
 	void RenderBullet();
 	void JumpAct();
 

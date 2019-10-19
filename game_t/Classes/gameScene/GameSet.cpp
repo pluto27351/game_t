@@ -1,4 +1,4 @@
-#include "GameSet.h"
+ï»¿#include "GameSet.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "gameScene/GamePlay.h"
@@ -60,12 +60,12 @@ bool GameSet::init()
 	
 	addChild(rootNode);
 
-	//­µ®Ä.­µ¼Ö
+	//éŸ³æ•ˆ.éŸ³æ¨‚
 	SimpleAudioEngine::getInstance()->preloadEffect("./Audio/button.WAV");
 	auto bkmusic = (cocostudio::ComAudio *)rootNode->getChildByName("BG_Music")->getComponent("BG_Music");
 	bkmusic->playBackgroundMusic();
 
-	//«ö¶s
+	//æŒ‰éˆ•
 	_btnPlay = new C3Button(Vec2(1055,120), "b_playOn.png","b_playDown.png", "b_playDown.png");
 	this->addChild(_btnPlay,1);
 	_btnTable = new C3Button(Vec2(855, 120), "b_scoreOn.png", "b_scoreDown.png", "b_scoreDown.png");
@@ -75,7 +75,7 @@ bool GameSet::init()
 	_btnClose->setVisible(false);
 	this->addChild(_btnClose, 11);
 
-	//³]©w¸}¦â ©M Ä²±±ÂI
+	//è¨­å®šè…³è‰² å’Œ è§¸æŽ§é»ž
 	_PR = dynamic_cast<Sprite*>(rootNode->getChildByName("PR"));  SetRect(_PR,&rPR);
 	_PY = dynamic_cast<Sprite*>(rootNode->getChildByName("PY"));  SetRect(_PY,&rPY);
 	_PG = dynamic_cast<Sprite*>(rootNode->getChildByName("PG"));  SetRect(_PG,&rPG);
@@ -84,7 +84,7 @@ bool GameSet::init()
 	_Normal = dynamic_cast<Text*>(rootNode->getChildByName("Mode_N"));  SetRect(_Normal, &rNormal);
 	_Hard = dynamic_cast<Text*>(rootNode->getChildByName("Mode_H"));  SetRect(_Hard, &rHard);
 
-	//¿ï¾Ü¸}¦â°Êµe
+	//é¸æ“‡è…³è‰²å‹•ç•«
 	_Running = CSLoader::createNode("Ani/Runner.csb");
 	_Running->setPosition(_PR->getPosition());
 	_body = (cocos2d::Sprite *)_Running->getChildByName("body");
@@ -99,11 +99,11 @@ bool GameSet::init()
 	PColor = _PR->getColor();
 	PColor2 = Color3B(180,53,44);
 
-	//Ãö³¬³Q¿ï¾Üªº¹Ï¤ù
+	//é—œé–‰è¢«é¸æ“‡çš„åœ–ç‰‡
 	_PR->setVisible(false);
 	_PY->setVisible(true); _PG->setVisible(true); _PB->setVisible(true);
 
-	//±Æ¦æº]
+	//æŽ’è¡Œæ¦œ
 	_wbg = Sprite::createWithSpriteFrameName("w_bg.png");
 	_wbg->setPosition(640, 360);
 	_wbg->setScale(10, 10);
@@ -116,16 +116,16 @@ bool GameSet::init()
 	this->addChild(_tableNode, 10);
 	_tableNode->setVisible(false);
 
-	//Ä²±±
-	_listener1 = EventListenerTouchOneByOne::create();	//³Ð«Ø¤@­Ó¤@¹ï¤@ªº¨Æ¥ó²âÅ¥¾¹
-	_listener1->onTouchBegan = CC_CALLBACK_2(GameSet::onTouchBegan, this);		//¥[¤JÄ²¸I¶}©l¨Æ¥ó
-	_listener1->onTouchMoved = CC_CALLBACK_2(GameSet::onTouchMoved, this);		//¥[¤JÄ²¸I²¾°Ê¨Æ¥ó
-	_listener1->onTouchEnded = CC_CALLBACK_2(GameSet::onTouchEnded, this);		//¥[¤JÄ²¸IÂ÷¶}¨Æ¥ó
+	//è§¸æŽ§
+	_listener1 = EventListenerTouchOneByOne::create();	//å‰µå»ºä¸€å€‹ä¸€å°ä¸€çš„äº‹ä»¶è†è½å™¨
+	_listener1->onTouchBegan = CC_CALLBACK_2(GameSet::onTouchBegan, this);		//åŠ å…¥è§¸ç¢°é–‹å§‹äº‹ä»¶
+	_listener1->onTouchMoved = CC_CALLBACK_2(GameSet::onTouchMoved, this);		//åŠ å…¥è§¸ç¢°ç§»å‹•äº‹ä»¶
+	_listener1->onTouchEnded = CC_CALLBACK_2(GameSet::onTouchEnded, this);		//åŠ å…¥è§¸ç¢°é›¢é–‹äº‹ä»¶
 
-	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(_listener1, this);	//¥[¤J­è³Ð«Øªº¨Æ¥ó²âÅ¥¾¹
+	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(_listener1, this);	//åŠ å…¥å‰›å‰µå»ºçš„äº‹ä»¶è†è½å™¨
 
 
-	// ±N doStep ¨ç¦¡±¾¤J schedule list ¤¤¡A¨C¤@­Ó frame ´N³£·|³Q©I¥s¨ì
+	// å°‡ doStep å‡½å¼æŽ›å…¥ schedule list ä¸­ï¼Œæ¯ä¸€å€‹ frame å°±éƒ½æœƒè¢«å‘¼å«åˆ°
 	return true;
 }
 void GameSet::SetTable(CScore *table) {
@@ -174,7 +174,7 @@ void GameSet::ChageMode(Text *selected, Text *unselec_1, Text *unselec_2) {
 }
 
 
-bool  GameSet::onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent)//Ä²¸I¶}©l¨Æ¥ó
+bool  GameSet::onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent)//è§¸ç¢°é–‹å§‹äº‹ä»¶
 {
 	Point touchLoc = pTouch->getLocation();
 	if (rPR.containsPoint(touchLoc)){
@@ -218,7 +218,7 @@ bool  GameSet::onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent)//Ä²¸
 	return true;
 }
 
-void  GameSet::onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //Ä²¸I²¾°Ê¨Æ¥ó
+void  GameSet::onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //è§¸ç¢°ç§»å‹•äº‹ä»¶
 {
 	Point touchLoc = pTouch->getLocation();
 
@@ -227,11 +227,11 @@ void  GameSet::onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //Ä²
 	_btnTable->isLeave(touchLoc);
 }
 
-void  GameSet::onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //Ä²¸Iµ²§ô¨Æ¥ó 
+void  GameSet::onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent) //è§¸ç¢°çµæŸäº‹ä»¶ 
 {
 	Point touchLoc = pTouch->getLocation();
 
-	//Âà³õ´º
+	//è½‰å ´æ™¯
 	if (_btnPlay->isUsed()) {
 		//SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 		bkmusic->stopBackgroundMusic();

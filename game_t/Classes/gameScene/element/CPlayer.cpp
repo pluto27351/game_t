@@ -1,4 +1,4 @@
-#include "CPlayer.h"
+ï»¿#include "CPlayer.h"
 //#include "cocostudio/CocoStudio.h"
 //#include "ui/CocosGUI.h"
 //#include "CBullet.h"
@@ -27,7 +27,7 @@ CPlayer::CPlayer()
 }
 CPlayer::CPlayer(Color3B color, Color3B color2)
 {
-	//¹Ï¤ù
+	//åœ–ç‰‡
 	pt = Vec2(154.5, 350);
 	_Player = CSLoader::createNode("Ani/Runner.csb");
 	_Player->setPosition(pt);
@@ -46,7 +46,7 @@ CPlayer::CPlayer(Color3B color, Color3B color2)
 	this->color = color;
 	this->color2 = color2;
 
-	//¦å±ø
+	//è¡€æ¢
 	_hp = LoadingBar::create("sliderProgress.png", 100);
 	_hp->setPosition(pt + Vec2(-6.5, -125));
 	_hp->setColor(Color3B(255, 0, 0));
@@ -64,7 +64,7 @@ void CPlayer::start() {
 	_PlayerAni->gotoFrameAndPlay(0, 24, true);
 }
 
-//¤l¼u¥Í¦¨
+//å­å½ˆç”Ÿæˆ
 void CPlayer::RenderBullet() {
 	if (_mp->getPercent() > 10) {
 		hasBullet = true;
@@ -89,7 +89,7 @@ void CPlayer::RenderBullet() {
 	}
 }
 
-//¸õÅD°Ê§@
+//è·³èºå‹•ä½œ
 void CPlayer::JumpAct() {
 	_Player->stopActionByTag(1);
 	JumpFlag = true;
@@ -112,13 +112,13 @@ void CPlayer::JumpAct() {
 	_Player->runAction(sequence);
 }
 
-//Á×§K¦h­«Ä²¸I
+//é¿å…å¤šé‡è§¸ç¢°
 void CPlayer::JumpFlagChange() {
 	//JumpFlag = false;
 	JumpTime = 0;
 }
 
-//±þ¦º¤£¥Îªº¤l¼u
+//æ®ºæ­»ä¸ç”¨çš„å­å½ˆ
 void CPlayer::killbullet() {
 	if (_HeadBullet != NULL) {
 		if (_HeadBullet->dieFlag) {
@@ -137,7 +137,7 @@ Point CPlayer::getPosition() {
 	return (_Player->getPosition() - Vec2(0, 50));
 }
 
-//ÅÜÁyÅÜ¦â
+//è®Šè‡‰è®Šè‰²
 void CPlayer::changeFace(int mood) {
 	Layout *_normal = (cocos2d::ui::Layout *)_Player->getChildByName("Normal");
 	Layout *_happy = (cocos2d::ui::Layout *)_Player->getChildByName("Happy");
@@ -189,9 +189,9 @@ void CPlayer::decreaseHP() {
 int CPlayer::jumpCollider(Point enemy) {
 	Rect colliderArea;
 	colliderArea = Rect(_Player->getPositionX() - 65, _Player->getPositionY() - 20,180, 120);
-	if (colliderArea.containsPoint(enemy)) return 2;  //¥¢±Ñ
-	else if (enemy.x < 140) return 1;  //¦¨¥\
-	else return 0;									   //ÁÙ¦³¾÷·|
+	if (colliderArea.containsPoint(enemy)) return 2;  //å¤±æ•—
+	else if (enemy.x < 140) return 1;  //æˆåŠŸ
+	else return 0;									   //é‚„æœ‰æ©Ÿæœƒ
 }
 
 bool CPlayer::bulletCollider(Point boss) {
@@ -203,7 +203,7 @@ bool CPlayer::bulletCollider(Point boss) {
 	else return (false);
 }
 
-//°±¤î°Êµe
+//åœæ­¢å‹•ç•«
 void CPlayer::actionControl(bool run) {
 	if (run) {
 		_Player->onEnter();

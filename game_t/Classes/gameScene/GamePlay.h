@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
@@ -35,44 +35,44 @@ private:
 	C3Button *_btnGo,*_btnHome, *_btnRestart,*_btnMenu,*_btnHelp,*_btnClose1, *_btnClose2;
 	CScore *_STable;
 
-	//¹CÀ¸³]©wÅÜ¼Æ
+	//éŠæˆ²è¨­å®šè®Šæ•¸
 	bool START=false;
 	int Mode;
 	Color3B Cnormal, Cattacked;
 
-	//°Ñ¼Æ
+	//åƒæ•¸
 	bool hasEnemy = false, hasBoss = false, hasPlayer = false;
 	int bossNum = 0;
 
-	//Enemy¥Í¦¨¬ÛÃö
+	//Enemyç”Ÿæˆç›¸é—œ
 	bool renderFlag=true;
 	float TotalTime, dtTime, randomdt;
 
-	//¤À¼Æ¬ÛÃö
+	//åˆ†æ•¸ç›¸é—œ
 	Text *_Score,*_Level;
 	int  score,level;
 	char scoreNo[4],lvNo[5];
 	bool complete = false;
 
-	//Á×§K­«½Æ¥Í¦¨
+	//é¿å…é‡è¤‡ç”Ÿæˆ
 	bool EnemyFlag = false, BossFlag = false;
 	
 	void doStep(float);	
-	void setMode(int, Color3B, Color3B,CScore*);  //ª±®a¿ï¾Ü¬ö¿ı
-	void restart();   //¹CÀ¸¶}©l->ªì©l¤Æ
-	void start();     //¹CÀ¸¶}©l->°Êµe¼·©ñ
-	void RenderESet();   //enemy¥Í¦¨®É¶¡®t³]©w
-	void RenderEnemy();  //¥Í¦¨enemy
-	void RenderBoss();   //¥Í¦¨boss
-	void killEnemy();    //§PÂ_¨Ã±ş¦ºenemy
-	void killBoss();     //§PÂ_¨Ã±ş¦ºboss
-	void addScore(int);  //¥[ x ¤À
+	void setMode(int, Color3B, Color3B,CScore*);  //ç©å®¶é¸æ“‡ç´€éŒ„
+	void restart();   //éŠæˆ²é–‹å§‹->åˆå§‹åŒ–
+	void start();     //éŠæˆ²é–‹å§‹->å‹•ç•«æ’¥æ”¾
+	void RenderESet();   //enemyç”Ÿæˆæ™‚é–“å·®è¨­å®š
+	void RenderEnemy();  //ç”Ÿæˆenemy
+	void RenderBoss();   //ç”Ÿæˆboss
+	void killEnemy();    //åˆ¤æ–·ä¸¦æ®ºæ­»enemy
+	void killBoss();     //åˆ¤æ–·ä¸¦æ®ºæ­»boss
+	void addScore(int);  //åŠ  x åˆ†
 	void levelUp();
-	void jumpcCollide(CEnemy *);  //enemy¸I¼²§PÂ_
-	void jumpcCollide(CBoss *);   //boss¸I¼²§PÂ_
-	void bulletCollide();         //bullet¸I¼²§PÂ_
-	void menuControl(bool);        //¼u¥Xµøµ¡Åã¥Ü»PÁôÂÃ
-	void actionControl(bool);  //¼È°±»P¶}©l
+	void jumpcCollide(CEnemy *);  //enemyç¢°æ’åˆ¤æ–·
+	void jumpcCollide(CBoss *);   //bossç¢°æ’åˆ¤æ–·
+	void bulletCollide();         //bulletç¢°æ’åˆ¤æ–·
+	void menuControl(bool);        //å½ˆå‡ºè¦–çª—é¡¯ç¤ºèˆ‡éš±è—
+	void actionControl(bool);  //æš«åœèˆ‡é–‹å§‹
 	void theEnd();
 
 public:
@@ -83,12 +83,12 @@ public:
 	static cocos2d::Scene* createScene(int m, Color3B c1, Color3B c2,CScore *);
 
 	cocos2d::EventListenerTouchOneByOne *_listener1;
-	bool onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //Ä²¸I¶}©l¨Æ¥ó
-	void onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //Ä²¸I²¾°Ê¨Æ¥ó
-	void onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //Ä²¸Iµ²§ô¨Æ¥ó 
+	bool onTouchBegan(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //è§¸ç¢°é–‹å§‹äº‹ä»¶
+	void onTouchMoved(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //è§¸ç¢°ç§»å‹•äº‹ä»¶
+	void onTouchEnded(cocos2d::Touch *pTouch, cocos2d::Event *pEvent); //è§¸ç¢°çµæŸäº‹ä»¶ 
 
 	// implement the "static create()" method manually
-	// ­×§ï
+	// ä¿®æ”¹
 	CREATE_FUNC(GamePlay);
 };
 
